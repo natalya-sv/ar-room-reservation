@@ -1,0 +1,176 @@
+package nl.natalya.tetrisgame
+
+import android.annotation.SuppressLint
+import android.content.Context
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.Rect
+import android.view.View
+import nl.natalya.tetrisgame.data.SingleSquare
+
+class DrawView(context: Context) : View(context) {
+    private var paint = Paint()
+    private var singleSquare: SingleSquare
+    private var startXLeftPosition = 540
+    private var startYTopPosition = -90
+    private var step = 90
+    private var canvasWidth = 1080
+    private var canvasHeight = 1260
+    var movingIsAllowed = true
+    private var listOfRect = mutableListOf<Rect>()
+    private var listToDelete = mutableListOf<Rect>()
+    private var myActivity: MainActivity
+    var userPoints = 0
+
+    init {
+        val rect = Rect(startXLeftPosition, startYTopPosition, startXLeftPosition + step, startYTopPosition + step)
+        singleSquare = SingleSquare("single square", 1, rect)
+        singleSquare.rectDimensions.right = singleSquare.rectDimensions.left + (step * singleSquare.numberOfSquares)
+
+        myActivity = context as MainActivity
+        var i = 1
+        var xLeft = 0
+        while (i < 13) {
+            listOfRect.add(Rect(xLeft, canvasHeight, xLeft + step, canvasHeight + step))
+            xLeft += step
+            i++
+        }
+        this.paint.color = Color.RED
+    }
+
+    @SuppressLint("DrawAllocation")
+    override fun onDraw(canvas: Canvas?) {
+        super.onDraw(canvas)
+        canvasWidth = width
+        canvasHeight = height
+
+        for (rectangle in listOfRect) {
+            canvas?.drawRect(rectangle, paint)
+        }
+        for (r in listOfRect) {
+            if (singleSquare.rectDimensions.top  == r.top) {
+                movingIsAllowed = false
+                break
+            }
+        }
+
+        val currentPosition = Rect(singleSquare.rectDimensions.left, singleSquare.rectDimensions.top, singleSquare.rectDimensions.left + (step * singleSquare.numberOfSquares), singleSquare.rectDimensions.top + step)
+
+        if (movingIsAllowed) {
+            canvas?.drawRect(currentPosition, paint)
+
+        } else {
+            listOfRect.add(currentPosition)
+            singleSquare.rectDimensions = Rect(startXLeftPosition, startYTopPosition, startXLeftPosition + step, startYTopPosition + step)
+            movingIsAllowed = true
+        }
+        //draw all previous rects
+
+    }
+
+    fun deleteFullLine() {
+//        var num = 0
+//        for (rectangle in listOfRect) {
+//            if (rectangle.top == 1170) {
+//                num++
+//            }
+//            canvas?.drawRect(rectangle, paint)
+//        }
+//
+//        if (num == 12) {
+//            for (rec in listOfRect) {
+//                if (rec.top == 1170) {
+//                    listToDelete.add(rec)
+//                }
+//            }
+//
+//            listOfRect.removeAll(listToDelete)
+//            for (r in listOfRect) {
+//                if (r.top <= 1170) {
+//                    r.top = r.top + step
+//                    r.bottom = r.bottom + step
+//                }
+//                canvas?.drawRect(r, paint)
+//            }
+//            userPoints += 2
+//            (myActivity).gameViewModel.setPoints(userPoints)
+//            listToDelete.clear()
+//        }
+    }
+
+    fun moveRight() {
+        val nextStep = Rect(singleSquare.rectDimensions.left + (step * (singleSquare.numberOfSquares - 1)), singleSquare.rectDimensions.top + step, singleSquare.rectDimensions.left + (step * singleSquare.numberOfSquares), singleSquare.rectDimensions.top + (step * 2))
+        var stepAllowed = true
+
+        for (r in listOfRect) {
+            if (nextStep == r || nextStep.right >= canvasWidth) {
+                stepAllowed = false
+                break
+            }
+        }
+
+        if (movingIsAllowed && stepAllowed) {
+            if (singleSquare.rectDimensions.left + (step * singleSquare.numberOfSquares) <= canvasWidth) {
+                singleSquare.rectDimensions.left = singleSquare.rectDimensions.left + step
+                invalidate()
+            }
+        }
+    }
+
+    fun moveLeft() {
+        val nextStep = Rect(singleSquare.rectDimensions.left - step, singleSquare.rectDimensions.top + step, singleSquare.rectDimensions.left + (step * singleSquare.numberOfSquares), singleSquare.rectDimensions.top + (step * 2))
+
+        var stepAllowed = true
+        for (rectangle in listOfRect) {
+            if (rectangle == nextStep) {
+                stepAllowed = false
+                break
+            }
+        }
+        if (movingIsAllowed && stepAllowed) {
+            if (singleSquare.rectDimensions.left - step >= 0) {
+                singleSquare.rectDimensions.left = singleSquare.rectDimensions.left - step
+                invalidate()
+            }
+        }
+    }
+
+    fun moveDown() {
+        checkNextPosition()
+        if (movingIsAllowed) {
+            singleSquare.rectDimensions.top = singleSquare.rectDimensions.top + step
+        }
+        invalidate()
+    }
+
+    private fun checkNextPosition() {
+        val currentRec = Rect(singleSquare.rectDimensions.left, singleSquare.rectDimensions.top, singleSquare.rectDimensions.left + (step * singleSquare.numberOfSquares), singleSquare.rectDimensions.top + step)
+        val nextStep = Rect(singleSquare.rectDimensions.left + step, singleSquare.rectDimensions.top + step, singleSquare.rectDimensions.left, singleSquare.rectDimensions.top)
+
+        if (nextStep.top >= canvasHeight) {
+            val num = singleSquare.numberOfSquares
+            var i = 1
+            while (i < (num + 1)) {
+                val recToAdd = Rect(singleSquare.rectDimensions.left, singleSquare.rectDimensions.top, singleSquare.rectDimensions.left + (step * i), singleSquare.rectDimensions.top + step)
+                var alreadyAdded = false
+                for (r in listOfRect) {
+                    if (r == recToAdd) {
+                        alreadyAdded = true
+                    }
+                }
+                if (!alreadyAdded) {
+                    listOfRect.add(recToAdd)
+                }
+                i++
+            }
+            movingIsAllowed = false
+        }
+
+        if (!movingIsAllowed && currentRec.top == 0) {
+            (myActivity).gameViewModel.setGameOver(true)
+        }
+    }
+}
+
+

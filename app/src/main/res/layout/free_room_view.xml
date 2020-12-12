@@ -1,0 +1,66 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/freeRoomView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/white_round"
+        android:backgroundTint="@color/transparant_white">
+
+        <TextView
+            android:id="@+id/free_room_name"
+            style="@style/room_availability_room_name"
+            android:text="@string/roomname"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/room_availability_text"
+            style="@style/room_availability_room_status"
+            android:text="@string/free_room"
+            android:textColor="@color/green"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/free_room_name" />
+
+        <View
+            android:id="@+id/viewLine"
+            style="@style/room_availability_horizontal_line"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/room_availability_text" />
+
+        <Button
+            android:id="@+id/room_reservation_button"
+            style="@style/main_button_style"
+            android:layout_marginTop="3dp"
+            android:text="@string/book_room"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewLine" />
+
+        <TextView
+            android:id="@+id/next_bookings"
+            style="@style/room_availability_titles"
+            android:text="@string/next_reservations"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/room_reservation_button" />
+
+        <TextView
+            android:id="@+id/next_reservation_view_free"
+            style="@style/room_availability_titles"
+            android:text="@string/no_reservations"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/next_bookings" />
+
+        <ListView
+            android:id="@+id/meetings_List_free"
+            style="@style/meetingRoom_reservations_overview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/next_reservation_view_free" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

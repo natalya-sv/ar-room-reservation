@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">AR Room Reservation</string>
+    <string name="free_room">Free</string>
+    <string name="busy_room">Busy</string>
+    <string name="reservation">Next reservations:</string>
+    <string name="no_reservations">No reservations found</string>
+    <string name="book_room">Book Now</string>
+    <string name="welcome_text">Welcome to the Augmented Reality Reservation App!</string>
+    <string name="profile_text">Here is your Profile</string>
+    <string name="working_spot_text">Here will be working spots info</string>
+    <string name="sign_in_button_text">Sign In</string>
+    <string name="sign_out_button_text">Sign Out</string>
+    <string name="sign_in_request">Please Sign In</string>
+    <string name="show_details_button">Show All</string>
+    <string name="home_page_text">To check the room availability go to the Rooms tab.
+            Point your camera to the room image and room availability will appear. Book room if
+            free or get details of the current meeting</string>
+    <string name="error_authentication">Error authenticating..Check Internet connection</string>
+    <string name="database_loaded_success">Image Database is loaded</string>
+    <string name="database_loaded_failure">Image Database loading is failed</string>
+    <string name="interactive_sign_in">Sign in is required</string>
+    <string name="interactive_sign_in_failure">Something went wrong…Try again later</string>
+    <string name="roomname">Roomname</string>
+    <string name="reservation_body_content">Personal meeting via the AR Room Reservation app</string>
+    <string name="event_subject">Fast booking via AR Room Reservation app</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="ok_button">OK</string>
+    <string name="date_format">dd LLLL yyyy</string>
+    <string name="sing_out_failure">Sign out error…Try again later…</string>
+    <string name="user_read">User.Read</string>
+    <string name="calendars_read">Calendars.Read</string>
+    <string name="calendars_read_write">Calendars.ReadWrite</string>
+    <string name="booking_failure">The room is not available for the chosen time</string>
+    <string name="load_ar_failure">Could not load AR view</string>
+    <string name="thirty_min_meeting">30 min</string>
+    <string name="sixty_min_meeting">60 min</string>
+    <string name="time_picker_title">Choose meeting duration</string>
+    <string name="camera_permission_message">Camera permission is needed to run this application</string>
+    <string name="install_arcore">Please install ARCore</string>
+    <string name="update_arcore">Please update ARCore</string>
+    <string name="update_app">Please update this app</string>
+    <string name="ar_not_supported">This device does not support AR</string>
+    <string name="ar_session_failed">Failed to create AR session</string>
+    <string name="free_word">Free</string>
+    <string name="room_reservation_failure">Booking is not possible</string>
+    <string name="free_until">Free until  </string>
+    <string name="error_message_for_the_user">Something went wrong…Check camera permission and if Google Services for AR is installed</string>
+    <string name="next_reservations">Next reservations</string>
+    <string name="organizer">Organizer:</string>
+    <string name="date">Date:</string>
+    <string name="time">Time:</string>
+    <string name="hyphen">-</string>
+    <string name="topic">Topic:</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome_string">Welcome, </string>
+</resources>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".SettingsFragment"
+    tools:layout="@layout/fragment_settings">
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="settingsModel"
+            type="nl.natalya.roomreservation.viewmodels.UserViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/settingsFragmentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp">
+
+        <TextView
+            android:id="@+id/text"
+            style="@style/TextAppearance.Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textAlignment="center"
+            android:text="Fill in the username and password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/email"
+            style="@style/main_text_style"
+            android:layout_marginTop="65dp"
+            android:text="Email"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text" />
+
+        <EditText
+            android:id="@+id/emailField"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:autofillHints="email"
+            android:backgroundTint="@color/black"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:text="@{settingsModel.currentUser.userEmail}"
+            android:textColorHint="@color/grey"
+            app:layout_constraintStart_toStartOf="@+id/password"
+            app:layout_constraintTop_toBottomOf="@+id/text"
+            tools:ignore="LabelFor" />
+
+        <TextView
+            android:id="@+id/oldPasswordText"
+            style="@style/main_text_style"
+            android:layout_marginTop="55dp"
+            android:text="Old password"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/email" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="28dp"
+            android:autofillHints="password"
+            android:backgroundTint="@color/black"
+            android:hint="Old Password"
+            android:inputType="textEmailAddress"
+            android:textColorHint="@color/grey"
+            app:layout_constraintStart_toEndOf="@+id/oldPasswordText"
+            app:layout_constraintTop_toBottomOf="@+id/emailField"
+            tools:ignore="LabelFor,TextFields" />
+
+        <TextView
+            android:id="@+id/newPasswordText"
+            style="@style/main_text_style"
+            android:layout_marginTop="55dp"
+            android:text="New password"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/oldPasswordText" />
+
+        <EditText
+            android:id="@+id/newPassword"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:autofillHints="newPassword"
+            android:backgroundTint="@color/black"
+            android:hint="New Password"
+            android:inputType="textEmailAddress"
+            android:textColorHint="@color/grey"
+            app:layout_constraintStart_toStartOf="@+id/password"
+            app:layout_constraintTop_toBottomOf="@+id/password"
+            tools:ignore="LabelFor, TextFields" />
+
+        <Button
+            android:id="@+id/change_password"
+            style="@style/main_button_style"
+            android:layout_marginBottom="20dp"
+            android:text="Change password"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

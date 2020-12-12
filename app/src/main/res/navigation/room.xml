@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/room"
+    app:startDestination="@id/roomFinderFragment">
+
+    <fragment
+        android:id="@+id/roomFinderFragment"
+        android:name="nl.natalya.roomreservation.ui.RoomFinderFragment"
+        tools:layout="@layout/fragment_room_finder"
+        android:label="RoomFinderFragment" >
+        <action
+            android:id="@+id/action_roomFinderFragment_to_roomReservationFragment"
+            app:destination="@id/roomReservationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/roomReservationFragment"
+        android:name="nl.natalya.roomreservation.ui.RoomReservationFragment"
+        android:label="Room reservation"
+        tools:layout="@layout/fragment_room_reservation" >
+    <argument
+        android:name="selectedMeetingRoom"
+        app:argType="nl.natalya.roomreservation.data.MeetingRoom"/>
+    </fragment>
+
+</navigation>

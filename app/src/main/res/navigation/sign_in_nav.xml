@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sign_in_nav"
+    app:startDestination="@id/signInDialogFragment">
+    <fragment
+        android:id="@+id/signInDialogFragment"
+        android:name="nl.natalya.roomreservation.ui.SignInDialogFragment"
+        tools:layout="@layout/fragment_sign_in"
+        android:label="SignInDialogFragment" >
+        <action
+            android:id="@+id/action_signInDialogFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="nl.natalya.roomreservation.ui.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" />
+</navigation>

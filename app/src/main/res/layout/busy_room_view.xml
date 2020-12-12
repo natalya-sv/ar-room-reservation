@@ -1,0 +1,132 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/busyRoomLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/white_round"
+        android:backgroundTint="@color/transparant_white">
+
+        <TextView
+            android:id="@+id/busy_room_name"
+            style="@style/room_availability_room_name"
+            android:text="@string/roomname"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/room_availability"
+            style="@style/room_availability_room_status"
+            android:layout_marginTop="3dp"
+            android:text="@string/busy_room"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/busy_room_name" />
+
+        <View
+            android:id="@+id/view"
+            style="@style/room_availability_horizontal_line"
+            android:layout_marginTop="3dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/room_availability" />
+
+        <TextView
+            android:id="@+id/dateText"
+            style="@style/room_availability_titles"
+            android:text="@string/date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <TextView
+            android:id="@+id/date"
+            style="@style/room_availability_meeting_room_info"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintStart_toEndOf="@+id/dateText"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <TextView
+            android:id="@+id/time_reservationText"
+            style="@style/room_availability_titles"
+            android:text="@string/time"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dateText" />
+
+        <TextView
+            android:id="@+id/startTimeReservation"
+            style="@style/room_availability_meeting_room_info"
+            android:layout_marginStart="5dp"
+            app:layout_constraintStart_toEndOf="@+id/time_reservationText"
+            app:layout_constraintTop_toBottomOf="@+id/date" />
+
+        <TextView
+            android:id="@+id/hyphen"
+            style="@style/room_availability_meeting_room_info"
+            android:text="@string/hyphen"
+            app:layout_constraintEnd_toStartOf="@id/endTimeReservation"
+            app:layout_constraintStart_toEndOf="@+id/startTimeReservation"
+            app:layout_constraintTop_toBottomOf="@+id/date" />
+
+        <TextView
+            android:id="@+id/endTimeReservation"
+            style="@style/room_availability_meeting_room_info"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintStart_toEndOf="@+id/hyphen"
+            app:layout_constraintTop_toBottomOf="@+id/date" />
+
+        <TextView
+            android:id="@+id/roomOrganizerText"
+            style="@style/room_availability_titles"
+            android:text="@string/organizer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/time_reservationText" />
+
+        <TextView
+            android:id="@+id/roomOrganizer"
+            style="@style/room_availability_meeting_room_info"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintStart_toEndOf="@+id/roomOrganizerText"
+            app:layout_constraintTop_toBottomOf="@+id/endTimeReservation" />
+
+        <TextView
+            android:id="@+id/meetingTopic"
+            style="@style/room_availability_titles"
+            android:text="@string/topic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/roomOrganizerText" />
+
+        <TextView
+            android:id="@+id/meetingTopicText"
+            style="@style/room_availability_meeting_room_info"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintStart_toEndOf="@+id/meetingTopic"
+            app:layout_constraintTop_toBottomOf="@+id/roomOrganizer" />
+
+        <TextView
+            android:id="@+id/next_bookings"
+            style="@style/room_availability_titles"
+            android:layout_marginTop="8dp"
+            android:text="@string/reservation"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/meetingTopicText" />
+
+        <TextView
+            android:id="@+id/next_reservation_view_busy"
+            style="@style/room_availability_titles"
+            android:layout_marginTop="3dp"
+            android:text="@string/no_reservations"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/next_bookings" />
+
+        <ListView
+            android:id="@+id/meetingList"
+            style="@style/meetingRoom_reservations_overview"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/next_reservation_view_busy" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,71 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="locationDetailsViewModel"
+            type="nl.natalya.roomreservation.ui.location.LocationDetailsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp">
+
+        <TextView
+            android:id="@+id/cityName"
+            style="@style/TextAppearance.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center_horizontal"
+            android:text="@{String.valueOf(locationDetailsViewModel.selectedLocation.city.cityName)}"
+            android:textColor="#de000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Location" />
+
+        <TextView
+            android:id="@+id/nrOfWorkingSpots"
+            style="@style/TextAppearance.Subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@{`Number of working spots:`+ String.valueOf(locationDetailsViewModel.selectedLocation.workingSpots.size())}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cityName"
+            tools:text="Working spots" />
+
+
+        <TextView
+            android:id="@+id/date"
+            style="@style/TextAppearance.Subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="date today"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nrOfWorkingSpots" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/workingSpots_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:clipToPadding="false"
+            android:padding="4dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/date"
+            app:listSpots="@{locationDetailsViewModel.selectedLocation.workingSpots}"
+            tools:listitem="@layout/working_spot_item" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

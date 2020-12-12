@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:enabled="true"
+        android:icon="@drawable/ic_home_black"
+        android:title="Home" />
+    <item
+        android:id="@+id/room"
+        android:enabled="true"
+        android:icon="@drawable/ic_event_black"
+        android:title="Rooms" />
+
+    <item
+        android:id="@+id/work_place_nav"
+        android:enabled="true"
+        android:icon="@drawable/ic_person_pin_black"
+        android:title="Spot" />
+    <item
+        android:id="@+id/profile"
+        android:enabled="true"
+        android:icon="@drawable/ic_person_black"
+        android:title="Profile" />
+</menu>
